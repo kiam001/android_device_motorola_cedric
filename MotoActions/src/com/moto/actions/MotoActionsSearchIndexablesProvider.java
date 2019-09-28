@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.moto.actions;
 
 import android.database.Cursor;
 import android.database.MatrixCursor;
@@ -33,8 +33,8 @@ import static android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS;
 import static android.provider.SearchIndexablesContract.INDEXABLES_XML_RES_COLUMNS;
 import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS;
 
-public class LineageActionsSearchIndexablesProvider extends SearchIndexablesProvider {
-    private static final String TAG = "LineageActionsSearchIndexablesProvider";
+public class MotoActionsSearchIndexablesProvider extends SearchIndexablesProvider {
+    private static final String TAG = "MotoActionsSearchIndexablesProvider";
 
     @Override
     public boolean onCreate() {
@@ -73,7 +73,7 @@ public class LineageActionsSearchIndexablesProvider extends SearchIndexablesProv
         ref[COLUMN_INDEX_XML_RES_CLASS_NAME] = null;
         ref[COLUMN_INDEX_XML_RES_ICON_RESID] = sir.iconResId;
         ref[COLUMN_INDEX_XML_RES_INTENT_ACTION] = "com.android.settings.action.EXTRA_SETTINGS";
-        ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "org.lineageos.settings.device";
+        ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_PACKAGE] = "com.moto.actions";
         ref[COLUMN_INDEX_XML_RES_INTENT_TARGET_CLASS] = sir.className;
         return ref;
     }

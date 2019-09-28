@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.moto.actions;
 
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
@@ -59,17 +59,16 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.ViewConfiguration;
+import android.widget.Toast;
 
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
 
-import org.lineageos.settings.device.util.FileUtils;
+import com.moto.actions.util.FileUtils;
 
 import java.util.List;
 
-import static org.lineageos.settings.device.actions.Constants.*;
-
-import org.lineageos.settings.device.utils.ProximityUtils;
+import static com.moto.actions.actions.Constants.*;
 
 public class KeyHandler implements DeviceKeyHandler {
 
@@ -141,7 +140,7 @@ public class KeyHandler implements DeviceKeyHandler {
                 "GestureWakeLock");
 
         mProximityTimeOut = mContext.getResources().getInteger(
-                org.lineageos.platform.internal.R.integer.config_proximityCheckTimeout);
+                com.moto.actions.internal.R.integer.config_proximityCheckTimeout);
 
         if (ProximityUtils.isProximityWakeEnabled(mContext)) {
             mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);

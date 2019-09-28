@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.actions;
+package com.moto.actions.actions;
 
 import java.util.List;
 
@@ -25,23 +25,23 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-import org.lineageos.settings.device.LineageActionsSettings;
-import org.lineageos.settings.device.SensorHelper;
+import com.moto.actions.MotoActionsSettings;
+import com.moto.actions.SensorHelper;
 
 public class CameraActivationSensor implements SensorEventListener, UpdatedStateNotifier {
-    private static final String TAG = "LineageActions-CameraSensor";
+    private static final String TAG = "MotoActions-CameraSensor";
 
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
-    private final LineageActionsSettings mLineageActionsSettings;
+    private final MotoActionsSettings mMotoActionsSettings;
     private final SensorHelper mSensorHelper;
 
     private final Sensor mSensor;
 
     private boolean mIsEnabled;
 
-    public CameraActivationSensor(LineageActionsSettings lineageActionsSettings, SensorHelper sensorHelper) {
-        mLineageActionsSettings = lineageActionsSettings;
+    public CameraActivationSensor(MotoActionsSettings motoActionsSettings, SensorHelper sensorHelper) {
+        mMotoActionsSettings = motoActionsSettings;
         mSensorHelper = sensorHelper;
         mSensor = sensorHelper.getCameraActivationSensor();
         mSensorHelper.registerListener(mSensor, this);
@@ -49,10 +49,10 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
 
     @Override
     public synchronized void updateState() {
-        if (mLineageActionsSettings.isCameraGestureEnabled() && !mIsEnabled) {
+        if (mMotoActionsSettings.isCameraGestureEnabled() && !mIsEnabled) {
             Log.d(TAG, "Enabling");
             mIsEnabled = true;
-        } else if (! mLineageActionsSettings.isCameraGestureEnabled() && mIsEnabled) {
+        } else if (! mMotoActionsSettings.isCameraGestureEnabled() && mIsEnabled) {
             Log.d(TAG, "Disabling");
             mIsEnabled = false;
         }
@@ -61,7 +61,7 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
     @Override
     public void onSensorChanged(SensorEvent event) {
         Log.d(TAG, "activate camera");
-        if (mIsEnabled) mLineageActionsSettings.cameraAction();
+        if (mIsEnabled) mMotoActionsSettings.cameraAction();
     }
 
     @Override

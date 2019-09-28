@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.moto.actions;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -27,12 +27,12 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.lineageos.settings.device.util.FileUtils;
-import org.lineageos.settings.device.actions.Constants;
-import org.lineageos.settings.device.ServiceWrapper.LocalBinder;
+import com.moto.actions.util.FileUtils;
+import com.moto.actions.actions.Constants;
+import com.moto.actions.ServiceWrapper.LocalBinder;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
-    static final String TAG = "LineageActions";
+    static final String TAG = "MotoActions";
     final String NAVBAR_SHOWN = "navbar_shown";
 
     private ServiceWrapper mServiceWrapper;
