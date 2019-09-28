@@ -63,6 +63,7 @@ public class Constants {
     public static final int ACTION_DIALER = 117;
     public static final int ACTION_EMAIL = 118;
     public static final int ACTION_MESSAGES = 119;
+    public static final int ACTION_PIP = 120;
     public static final int ACTION_LAST_APP = 121;
     public static final int[] sFPSupportedActions = new int[]{
             ACTION_HOME,
@@ -78,6 +79,7 @@ public class Constants {
             ACTION_FLASHLIGHT,
             ACTION_CAMERA,
             ACTION_SCREENSHOT,
+            ACTION_PIP,
             ACTION_LAST_APP
     };
     public static final int[] sFPSupportedActionsScreenOff = new int[]{
@@ -105,6 +107,10 @@ public class Constants {
     public static final String FP_HAPTIC_SCREENOFF_NODE = "/sys/homebutton/haptic_off";
     public static final String FP_HAPTIC_SCREENOFF_KEY = "fp_haptic_scr_off";
 
+    // Proximity check node
+    public static final String FP_PROXIMITY_CHECK_SCREENOFF_NODE = "/sys/homebutton/proximity_check_off";
+    public static final String FP_PROXIMITY_CHECK_SCREENOFF_KEY = "fp_proximity_check_scr_off";
+
     // List of keys
     public static final String FP_KEYS = "fp_keys";
     public static final String FP_KEY_DBLTAP = "fp_key_dbltap";
@@ -131,9 +137,6 @@ public class Constants {
     public static final String FP_KEY_SCREENOFF_LEFT_NODE = "/sys/homebutton/key_screenoff_left";
     public static final String FP_KEY_SCREENOFF_RIGHT_NODE = "/sys/homebutton/key_screenoff_right";
 
-    // Screen off gestures haptic
-    public static final String KEY_GESTURE_ENABLE_HAPTIC_FEEDBACK = "screen_off_gesture_haptic_feedback";
-
     // Holds <preference_key> -> <proc_node> mapping
     public static final Map<String, String> sBooleanNodePreferenceMap = new HashMap<>();
 
@@ -145,6 +148,7 @@ public class Constants {
         FP_HOME_KEY_OFF,
         FP_HAPTIC_KEY,
         FP_HAPTIC_SCREENOFF_KEY,
+        FP_PROXIMITY_CHECK_SCREENOFF_KEY,
         FP_KEYS,
         FP_KEY_DBLTAP,
         FP_KEY_HOLD,
@@ -155,7 +159,7 @@ public class Constants {
         FP_KEY_HOLD_OFF,
         FP_KEY_RIGHT_OFF,
         FP_KEY_LEFT_OFF,
-        FP_HOME_KEY_OFF,
+        FP_HOME_KEY_OFF
     };
 
     static {
@@ -163,6 +167,7 @@ public class Constants {
         sBooleanNodePreferenceMap.put(FP_HOME_KEY_OFF, FP_HOME_OFF_NODE);
         sBooleanNodePreferenceMap.put(FP_HAPTIC_KEY, FP_HAPTIC_NODE);
         sBooleanNodePreferenceMap.put(FP_HAPTIC_SCREENOFF_KEY, FP_HAPTIC_SCREENOFF_NODE);
+        sBooleanNodePreferenceMap.put(FP_PROXIMITY_CHECK_SCREENOFF_KEY, FP_PROXIMITY_CHECK_SCREENOFF_NODE);
         sBooleanNodePreferenceMap.put(FP_KEYS, FP_KEYS_NODE);
         sBooleanNodePreferenceMap.put(FP_KEY_DBLTAP, FP_KEY_DBLTAP_NODE);
         sBooleanNodePreferenceMap.put(FP_KEY_HOLD, FP_KEY_HOLD_NODE);
@@ -177,6 +182,7 @@ public class Constants {
         sNodeDefaultMap.put(FP_HOME_KEY_OFF, false);
         sNodeDefaultMap.put(FP_HAPTIC_KEY, false);
         sNodeDefaultMap.put(FP_HAPTIC_SCREENOFF_KEY, false);
+        sNodeDefaultMap.put(FP_PROXIMITY_CHECK_SCREENOFF_KEY, true);
         sNodeDefaultMap.put(FP_KEYS, "0");
         sNodeDefaultMap.put(FP_KEY_DBLTAP, "0");
         sNodeDefaultMap.put(FP_KEY_HOLD, "0");
@@ -202,7 +208,7 @@ public class Constants {
     public static void writePreference(Context context, String pref) {
 
         String value = "1";
-
+        Log.e(TAG, "Write Pref: " + pref);
         if (!pref.equals(FP_KEYS) && !pref.equals(FP_KEY_DBLTAP) && !pref.equals(FP_KEY_HOLD) && !pref.equals(FP_KEY_LEFT) && !pref.equals(FP_KEY_RIGHT) &&
             !pref.equals(FP_KEYS_OFF) && !pref.equals(FP_KEY_DBLTAP_OFF) && !pref.equals(FP_KEY_HOLD_OFF) && !pref.equals(FP_KEY_LEFT_OFF) && !pref.equals(FP_KEY_RIGHT_OFF))
             value = isPreferenceEnabled(context, pref) ? "1" : "0";
@@ -210,6 +216,7 @@ public class Constants {
             value = GetPreference(context, pref);
 
         String node = sBooleanNodePreferenceMap.get(pref);
+            Log.e(TAG, "Write " + value + " to node " + node);
 
         if (!FileUtils.writeLine(node, value)) {
             Log.w(TAG, "Write " + value + " to node " + node +
