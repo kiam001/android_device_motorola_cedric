@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
@@ -63,13 +63,13 @@ import android.view.ViewConfiguration;
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
 
-import com.moto.actions.util.FileUtils;
+import org.lineageos.settings.device.util.FileUtils;
 
 import java.util.List;
 
-import static com.moto.actions.actions.Constants.*;
+import static org.lineageos.settings.device.actions.Constants.*;
 
-import com.moto.actions.utils.ProximityUtils;
+import org.lineageos.settings.device.utils.ProximityUtils;
 
 public class KeyHandler implements DeviceKeyHandler {
 
