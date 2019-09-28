@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions.actions;
+package org.lineageos.settings.device.actions;
 
 import java.util.List;
 
@@ -32,10 +32,10 @@ import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import com.moto.actions.SensorAction;
+import org.lineageos.settings.device.SensorAction;
 
 public class CameraActivationAction implements SensorAction {
-    private static final String TAG = "MotoActions";
+    private static final String TAG = "LineageActions";
 
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -33,10 +33,12 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.moto.actions.actions.Constants;
+import org.lineageos.settings.device.actions.Constants;
 
-import static com.moto.actions.actions.Constants.FP_HOME_KEY;
-import static com.moto.actions.actions.Constants.FP_HOME_KEY_OFF;
+import static org.lineageos.settings.device.actions.Constants.FP_HOME_KEY;
+import static org.lineageos.settings.device.actions.Constants.FP_HOME_KEY_OFF;
+
+import org.lineageos.settings.device.utils.ProximityUtils;
 
 public class FPGestureSettingsFragment extends PreferenceFragment {
 

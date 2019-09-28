@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions.actions;
+package org.lineageos.settings.device.actions;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -26,13 +26,13 @@ import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.moto.actions.MotoActionsSettings;
-import com.moto.actions.SensorHelper;
+import org.lineageos.settings.device.LineageActionsSettings;
+import org.lineageos.settings.device.SensorHelper;
 
 public class LiftToSilence extends PhoneStateListener implements SensorEventListener, UpdatedStateNotifier {
-    private static final String TAG = "MotoActions-LiftToSilence";
+    private static final String TAG = "LineageActions-LiftToSilence";
 
-    private final MotoActionsSettings mMotoActionsSettings;
+    private final LineageActionsSettings mLineageActionsSettings;
     private final SensorHelper mSensorHelper;
     private final Sensor mFlatUpSensor;
     private final Sensor mStowSensor;
@@ -44,9 +44,9 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
     private boolean mIsStowed;
     private boolean mLastFlatUp;
 
-    public LiftToSilence(MotoActionsSettings motoActionsSettings, Context context,
+    public LiftToSilence(LineageActionsSettings lineageActionsSettings, Context context,
                 SensorHelper sensorHelper) {
-        mMotoActionsSettings = motoActionsSettings;
+        mLineageActionsSettings = lineageActionsSettings;
         mSensorHelper = sensorHelper;
         mFlatUpSensor = sensorHelper.getFlatUpSensor();
         mStowSensor = sensorHelper.getStowSensor();
@@ -56,7 +56,7 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
 
     @Override
     public void updateState() {
-        if (mMotoActionsSettings.isLiftToSilenceEnabled()) {
+        if (mLineageActionsSettings.isLiftToSilenceEnabled()) {
             mTelephonyManager.listen(this, LISTEN_CALL_STATE);
         } else {
             mTelephonyManager.listen(this, 0);

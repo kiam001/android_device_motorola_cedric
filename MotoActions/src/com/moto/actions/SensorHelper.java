@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
 import java.util.List;
 import java.io.FileOutputStream;
@@ -30,7 +30,7 @@ import android.hardware.TriggerEventListener;
 import android.util.Log;
 
 public class SensorHelper {
-    private static final String TAG = "MotoActions";
+    private static final String TAG = "LineageActions";
 
     private static final int SENSOR_TYPE_MMI_CAMERA_ACTIVATION = 65540;
     private static final int SENSOR_TYPE_MMI_CHOP_CHOP = 65546;

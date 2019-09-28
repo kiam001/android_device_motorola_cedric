@@ -14,30 +14,30 @@
  * limitations under the License.
  */
 
-package com.moto.actions.doze;
+package org.lineageos.settings.device.doze;
 
 import android.hardware.Sensor;
 import android.hardware.TriggerEvent;
 import android.hardware.TriggerEventListener;
 import android.util.Log;
 
-import com.moto.actions.MotoActionsSettings;
-import com.moto.actions.SensorAction;
-import com.moto.actions.SensorHelper;
+import org.lineageos.settings.device.LineageActionsSettings;
+import org.lineageos.settings.device.SensorAction;
+import org.lineageos.settings.device.SensorHelper;
 
 public class GlanceSensor implements ScreenStateNotifier {
-    private static final String TAG = "MotoActions-GlanceSensor";
+    private static final String TAG = "LineageActions-GlanceSensor";
 
-    private final MotoActionsSettings mMotoActionsSettings;
+    private final LineageActionsSettings mLineageActionsSettings;
     private final SensorHelper mSensorHelper;
     private final SensorAction mSensorAction;
     private final Sensor mSensor;
 
     private boolean mEnabled;
 
-    public GlanceSensor(MotoActionsSettings motoActionsSettings, SensorHelper sensorHelper,
+    public GlanceSensor(LineageActionsSettings lineageActionsSettings, SensorHelper sensorHelper,
                 SensorAction action) {
-        mMotoActionsSettings = motoActionsSettings;
+        mLineageActionsSettings = lineageActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
@@ -55,7 +55,7 @@ public class GlanceSensor implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOff() {
-        if (mMotoActionsSettings.isPickUpEnabled() && !mEnabled) {
+        if (mLineageActionsSettings.isPickUpEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
             mSensorHelper.requestTriggerSensor(mSensor, mGlanceListener);
             mEnabled = true;

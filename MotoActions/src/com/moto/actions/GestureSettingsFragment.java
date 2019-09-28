@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;

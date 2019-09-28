@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions.actions;
+package org.lineageos.settings.device.actions;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -26,31 +26,31 @@ import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.moto.actions.MotoActionsSettings;
-import com.moto.actions.SensorHelper;
+import org.lineageos.settings.device.LineageActionsSettings;
+import org.lineageos.settings.device.SensorHelper;
 
 import static android.telephony.TelephonyManager.*;
 
 public class ProximitySilencer extends PhoneStateListener implements SensorEventListener, UpdatedStateNotifier {
-    private static final String TAG = "MotoActions-ProximitySilencer";
+    private static final String TAG = "LineageActions-ProximitySilencer";
 
     private static final int SILENCE_DELAY_MS = 500;
 
     private final TelecomManager mTelecomManager;
     private final TelephonyManager mTelephonyManager;
-    private final MotoActionsSettings mMotoActionsSettings;
+    private final LineageActionsSettings mLineageActionsSettings;
     private final SensorHelper mSensorHelper;
     private final Sensor mSensor;
     private boolean mIsRinging;
     private long mRingStartedMs;
     private boolean mCoveredRinging;
 
-    public ProximitySilencer(MotoActionsSettings motoActionsSettings, Context context,
+    public ProximitySilencer(LineageActionsSettings lineageActionsSettings, Context context,
                 SensorHelper sensorHelper) {
         mTelecomManager = (TelecomManager) context.getSystemService(Context.TELECOM_SERVICE);
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-        mMotoActionsSettings = motoActionsSettings;
+        mLineageActionsSettings = lineageActionsSettings;
         mSensorHelper = sensorHelper;
         mSensor = sensorHelper.getProximitySensor();
         mCoveredRinging = false;
@@ -59,7 +59,7 @@ public class ProximitySilencer extends PhoneStateListener implements SensorEvent
 
     @Override
     public void updateState() {
-        if (mMotoActionsSettings.isIrSilencerEnabled()) {
+        if (mLineageActionsSettings.isIrSilencerEnabled()) {
             mTelephonyManager.listen(this, LISTEN_CALL_STATE);
         } else {
             mTelephonyManager.listen(this, 0);

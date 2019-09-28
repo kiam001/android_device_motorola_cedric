@@ -15,21 +15,21 @@
  * limitations under the License.
  */
 
-package com.moto.actions.doze;
+package org.lineageos.settings.device.doze;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-import com.moto.actions.MotoActionsSettings;
-import com.moto.actions.SensorAction;
-import com.moto.actions.SensorHelper;
+import org.lineageos.settings.device.LineageActionsSettings;
+import org.lineageos.settings.device.SensorAction;
+import org.lineageos.settings.device.SensorHelper;
 
 public class ProximitySensor implements ScreenStateNotifier, SensorEventListener {
-    private static final String TAG = "MotoActions-ProximitySensor";
+    private static final String TAG = "LineageActions-ProximitySensor";
 
-    private final MotoActionsSettings mMotoActionsSettings;
+    private final LineageActionsSettings mLineageActionsSettings;
     private final SensorHelper mSensorHelper;
     private final SensorAction mSensorAction;
     private final Sensor mSensor;
@@ -38,9 +38,9 @@ public class ProximitySensor implements ScreenStateNotifier, SensorEventListener
 
     private boolean mSawNear = false;
 
-    public ProximitySensor(MotoActionsSettings motoActionsSettings, SensorHelper sensorHelper,
+    public ProximitySensor(LineageActionsSettings lineageActionsSettings, SensorHelper sensorHelper,
                 SensorAction action) {
-        mMotoActionsSettings = motoActionsSettings;
+        mLineageActionsSettings = lineageActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
@@ -58,7 +58,7 @@ public class ProximitySensor implements ScreenStateNotifier, SensorEventListener
 
     @Override
     public void screenTurnedOff() {
-        if (mMotoActionsSettings.isIrWakeupEnabled() && !mEnabled) {
+        if (mLineageActionsSettings.isIrWakeupEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;

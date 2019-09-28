@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
 import android.content.Intent;
 import android.os.Binder;
@@ -24,10 +24,10 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class ServiceWrapper extends android.app.Service {
-    static final String TAG = "MotoActions-ServiceWrapper";
+    static final String TAG = "LineageActions-ServiceWrapper";
 
     private final IBinder mBinder = new LocalBinder();
-    private MotoActionsService mMotoActionsService;
+    private LineageActionsService mLineageActionsService;
 
     public interface ServiceCallback {
         void sendResults(int resultCode, Bundle b);
@@ -45,7 +45,7 @@ public class ServiceWrapper extends android.app.Service {
     public void onCreate() {
         Log.i(TAG, "onCreate");
         super.onCreate();
-        mMotoActionsService = new MotoActionsService(this);
+        mLineageActionsService = new LineageActionsService(this);
     }
 
     @Override

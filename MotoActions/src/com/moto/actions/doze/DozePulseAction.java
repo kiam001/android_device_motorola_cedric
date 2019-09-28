@@ -15,16 +15,16 @@
  * limitations under the License.
  */
 
-package com.moto.actions.doze;
+package org.lineageos.settings.device.doze;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.moto.actions.SensorAction;
+import org.lineageos.settings.device.SensorAction;
 
 public class DozePulseAction implements SensorAction, ScreenStateNotifier {
-    private static final String TAG = "MotoActions";
+    private static final String TAG = "LineageActions";
 
     private static final int DELAY_BETWEEN_DOZES_IN_MS = 1500;
 

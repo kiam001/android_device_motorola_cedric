@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -63,7 +63,7 @@ public class DozeSettingsFragment extends PreferenceFragment {
 
         View switchBar = view.findViewById(R.id.switch_bar);
         mAmbientDisplaySwitch = (Switch) switchBar.findViewById(android.R.id.switch_widget);
-        mAmbientDisplaySwitch.setChecked(MotoActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
+        mAmbientDisplaySwitch.setChecked(LineageActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
         mAmbientDisplaySwitch.setOnCheckedChangeListener(mAmbientDisplayPrefListener);
 
         switchBar.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +74,14 @@ public class DozeSettingsFragment extends PreferenceFragment {
         });
 
         mSwitchBarText = switchBar.findViewById(R.id.switch_text);
-        mSwitchBarText.setText(MotoActionsSettings.isDozeEnabled(getActivity().getContentResolver()) ? R.string.switch_bar_on :
+        mSwitchBarText.setText(LineageActionsSettings.isDozeEnabled(getActivity().getContentResolver()) ? R.string.switch_bar_on :
                 R.string.switch_bar_off);
     }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.doze_panel);
-        boolean dozeEnabled = MotoActionsSettings.isDozeEnabled(getActivity().getContentResolver());
+        boolean dozeEnabled = LineageActionsSettings.isDozeEnabled(getActivity().getContentResolver());
         mHandwavePreference = (SwitchPreference) findPreference(KEY_GESTURE_HAND_WAVE);
         mPickupPreference = (SwitchPreference) findPreference(KEY_GESTURE_PICK_UP);
         updatePrefs(dozeEnabled);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions.util;
+package org.lineageos.settings.device.util;
 
 import android.util.Log;
 
