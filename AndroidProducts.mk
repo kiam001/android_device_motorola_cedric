@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/resurrection_cedric.mk
+    $(LOCAL_DIR)/rr_cedric.mk
 
 COMMON_LUNCH_CHOICES := \
-    resurrection_cedric-user \
-    resurrection_cedric-userdebug \
-    resurrection_cedric-eng
+    rr_cedric-user \
+    rr_cedric-userdebug \
+    rr_cedric-eng
