@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/cos_cedric.mk
+    $(LOCAL_DIR)/xtended_cedric.mk
 
 COMMON_LUNCH_CHOICES := \
-    cos_cedric-user \
-    cos_cedric-userdebug \
-    cos_cedric-eng
+    xtended_cedric-user \
+    xtended_cedric-userdebug \
+    xtended_cedric-eng
