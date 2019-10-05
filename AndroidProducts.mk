@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/crdroid_cedric.mk
+    $(LOCAL_DIR)/lineage_cedric.mk
 
 COMMON_LUNCH_CHOICES := \
-    crdroid_cedric-user \
-    crdroid_cedric-userdebug \
-    crdroid_cedric-eng
+    lineage_cedric-user \
+    lineage_cedric-userdebug \
+    lineage_cedric-eng
