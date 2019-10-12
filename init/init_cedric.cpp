@@ -95,7 +95,7 @@ void vendor_load_properties()
 
     // fingerprint
     property_override("ro.build.description", "cedric-user 8.1.0 OPPS28.85-13-2 d04a4 release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/walleye/walleye:9/PQ1A.190105.004/5148680:user/release-keys");
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/taimen/taimen:10/QP1A.191005.007.A1/5908163:user/release-keys");
 
 
     // rmt_storage
