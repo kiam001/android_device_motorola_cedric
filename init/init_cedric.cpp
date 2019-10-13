@@ -1,6 +1,5 @@
 /*
    Copyright (c) 2014, The Linux Foundation. All rights reserved.
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,7 +12,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -88,8 +86,15 @@ void vendor_load_properties()
         return;
 
     // sku
-    std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
-    property_override_dual("ro.product.model", "ro.vendor.product.model", sku.c_str());
+    std::string sku = "Moto G5 (";
+    sku.append(android::base::GetProperty("ro.boot.hardware.sku", ""));
+    sku.append(")");
+    property_set("ro.product.model", sku.c_str());
+
+    // fingerprint
+    property_override("ro.build.description", "cedric-user 8.1.0 OPPS28.85-13-2 d04a4 release-keys");
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "HUAWEI/CLT-L29/HWCLT:8.1.0/HUAWEICLT-L29/128(C432):user/release-keys");
+
 
     // rmt_storage
     std::string device = android::base::GetProperty("ro.boot.device", "");
