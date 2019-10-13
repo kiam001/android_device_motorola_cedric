@@ -34,10 +34,3 @@ PRODUCT_MANUFACTURER := motorola
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="cedric-user 8.1.0 OPPS28.85-13-2 d04a4 release-keys"
-
-
-# Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := google/blueline/blueline:9/PQ3A.190801.002/5670241:user/release-keys
